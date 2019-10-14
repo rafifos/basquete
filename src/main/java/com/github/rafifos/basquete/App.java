@@ -45,20 +45,21 @@ public class App {
   public static void main(String[] args) {
     Scanner stdin = new Scanner(System.in);
 
-    int option = 0;
+    String option = "0";
 
     do {
       switch (option) {
+      case "6":
+        stdin.close();
+        clearScreen();
+        System.out.println("Encerrando.");
+        System.exit(0);
+        break;
       default:
         printMenu();
-        option = stdin.nextInt();
+        option = stdin.next();
         break;
       }
-    } while (option != 6);
-
-    stdin.close();
-    clearScreen();
-    System.out.println("Encerrando.");
-    System.exit(0);
+    } while (true);
   }
 }
