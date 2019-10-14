@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class App {
   /**
-   * Limpa o buffer de saída do terminal/console. Equivalente à `clear` ou `cls`.
+   * Limpa o buffer de saída do terminal/console. Equivalente ao `clear` ou `cls`.
    */
   private static void clearScreen() {
     System.out.print("\033[H\033[2J");
@@ -25,7 +25,7 @@ public class App {
   /**
    * Saí do programa.
    *
-   * @param scanner - Objeto do tipo Scanner que será fechado.
+   * @param scanner  - Objeto do tipo Scanner que será fechado.
    * @param exitCode - Código de saída para o programa retornar ao SO.
    */
   private static void exitProgram(Scanner scanner, int exitCode) {
