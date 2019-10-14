@@ -23,6 +23,19 @@ public class App {
   }
 
   /**
+   * Saí do programa.
+   *
+   * @param scanner - Objeto do tipo Scanner que será fechado.
+   * @param exitCode - Código de saída para o programa retornar ao SO.
+   */
+  private static void exitProgram(Scanner scanner, int exitCode) {
+    scanner.close();
+    clearScreen();
+    System.out.println("Encerrando.");
+    System.exit(exitCode);
+  }
+
+  /**
    * Imprime o menu principal.
    */
   private static void printMenu() {
@@ -50,10 +63,7 @@ public class App {
     do {
       switch (option) {
       case "6":
-        stdin.close();
-        clearScreen();
-        System.out.println("Encerrando.");
-        System.exit(0);
+        exitProgram(stdin, 0);
         break;
       default:
         printMenu();
