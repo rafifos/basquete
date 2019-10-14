@@ -64,7 +64,7 @@ public class App {
   }
 
   /**
-   * Saí do programa.
+   * Sai do programa.
    *
    * @param exitCode          - Código de saída para o programa retornar ao SO.
    * @param shouldClearScreen - Se o programa deve ou não limpar a tela depois de
