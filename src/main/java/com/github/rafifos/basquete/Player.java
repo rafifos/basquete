@@ -21,7 +21,6 @@ public class Player implements Comparable<Player> {
    * @param height - Altura do jogador.
    */
   public Player(final String name, final double height) {
-    super();
     this.name = name;
     this.height = height;
   }
