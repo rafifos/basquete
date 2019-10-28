@@ -35,6 +35,9 @@ public class App {
       case "1":
         handlePlayerData();
         break;
+      case "2":
+        getPlayerHeightAverage();
+        break;
       case "4":
         showSmallestAndHighestPlayer();
         break;
@@ -82,6 +85,20 @@ public class App {
     System.exit(exitCode);
   }
 
+  private static void exitMethod(boolean shouldClearScreen) {
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException ie) {
+      ie.printStackTrace();
+      exitProgram(1, false);
+    }
+
+    if (shouldClearScreen) {
+      clearScreen();
+    }
+    setDefaultOption();
+  }
+
   /**
    * Imprime o menu principal.
    */
@@ -112,13 +129,8 @@ public class App {
         currentHeight = stdin.nextDouble();
       } catch (InputMismatchException ime) {
         System.out.println("Formato da altura inválida. Retornando ao menu principal.");
-        try {
-          Thread.sleep(3000);
-        } catch (InterruptedException ie) {
-          ie.printStackTrace();
-          exitProgram(1, false);
-        }
-        setDefaultOption();
+
+        exitMethod(false);
         return;
       }
 
@@ -128,6 +140,25 @@ public class App {
     orderedPlayers = players;
     Collections.sort(orderedPlayers);
     setDefaultOption();
+  }
+
+  /**
+   * Calcula a média das alturas dos jogadores.
+   */
+  private static void getPlayerHeightAverage() {
+    double _averageHeight = 0;
+
+    clearScreen();
+
+    for (int i = 0; i < players.size(); i++) {
+      _averageHeight += players.get(i).getHeight();
+    }
+
+    _averageHeight = _averageHeight / players.size();
+
+    System.out.println("A média das alturas do time é: " + _averageHeight);
+
+    exitMethod(true);
   }
 
   /**
@@ -144,14 +175,6 @@ public class App {
     System.out.print(orderedPlayers.get(orderedPlayers.size() - 1).getName());
     System.out.println(", com " + orderedPlayers.get(orderedPlayers.size() - 1).getHeight() + "m de altura");
 
-    try {
-      Thread.sleep(5000);
-    } catch (InterruptedException ie) {
-      ie.printStackTrace();
-      exitProgram(1, false);
-    }
-
-    clearScreen();
-    setDefaultOption();
+    exitMethod(true);
   }
 }
