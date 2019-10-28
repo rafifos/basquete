@@ -18,6 +18,8 @@ import java.util.Scanner;
  * temporada.
  */
 public class App {
+  public static List<Player> orderedPlayers = new ArrayList<>();
+
   private static Scanner stdin = new Scanner(System.in);
   private static String option = "0";
   private static List<Player> players = new ArrayList<>();
@@ -61,6 +63,7 @@ public class App {
    */
   private static void setDefaultOption() {
     option = "0";
+    clearScreen();
   }
 
   /**
@@ -122,6 +125,8 @@ public class App {
       players.add(new Player(currentName, currentHeight));
     }
 
+    orderedPlayers = players;
+    Collections.sort(orderedPlayers);
     setDefaultOption();
   }
 
@@ -129,19 +134,15 @@ public class App {
    * Mostra o Jogador mais baixo e o Jogador mais alto.
    */
   private static void showSmallestAndHighestPlayer() {
-    final List<Player> _players = players;
-
     clearScreen();
 
-    Collections.sort(_players);
-
     System.out.print("O jogador mais baixo é: ");
-    System.out.print(_players.get(0).getName());
-    System.out.println(", com " + _players.get(0).getHeight() + "m de altura");
+    System.out.print(orderedPlayers.get(0).getName());
+    System.out.println(", com " + orderedPlayers.get(0).getHeight() + "m de altura");
 
     System.out.print("O jogador mais alto é: ");
-    System.out.print(_players.get(_players.size() - 1).getName());
-    System.out.println(", com " + _players.get(_players.size() - 1).getHeight() + "m de altura");
+    System.out.print(orderedPlayers.get(orderedPlayers.size() - 1).getName());
+    System.out.println(", com " + orderedPlayers.get(orderedPlayers.size() - 1).getHeight() + "m de altura");
 
     try {
       Thread.sleep(5000);
