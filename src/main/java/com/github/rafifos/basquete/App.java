@@ -40,6 +40,9 @@ public class App {
       case "4":
         showSmallestAndHighestPlayer();
         break;
+      case "5":
+        showPlayerHeightMedian();
+        break;
       case "6":
         exitProgram(0, true);
         break;
@@ -162,6 +165,29 @@ public class App {
     _heightAverage = _heightAverage / players.size();
 
     System.out.println("A média das alturas do time é: " + _heightAverage + "m");
+
+    exitMethod(true);
+  }
+
+  /**
+   * Calcula e mostra a mediana das alturas dos jogadores
+   */
+  private static void showPlayerHeightMedian() {
+    int middle = orderedPlayers.size() / 2;
+    double _heightMedian = 0;
+
+    clearScreen();
+
+    if (middle > 0 && middle % 2 == 0) {
+      // Array é impar.
+      _heightMedian = orderedPlayers.get(middle).getHeight();
+    } else {
+      // Array é par.
+      _heightMedian = orderedPlayers.get(middle).getHeight() + orderedPlayers.get(middle - 1).getHeight();
+      _heightMedian = _heightMedian / 2;
+    }
+
+    System.out.println("A mediana das alturas do time é: " + _heightMedian + "m");
 
     exitMethod(true);
   }
