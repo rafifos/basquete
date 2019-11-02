@@ -135,7 +135,7 @@ public class App {
     String currentName = null;
     double currentHeight = 0.0;
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 10; i++) {
       clearScreen();
       stdin.nextLine();
 
