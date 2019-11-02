@@ -1,4 +1,4 @@
-# Atividade Prática Supervisionada - Algoritmos e Programação
+# Atividade Prática Supervisionada - Lógica de Programação
 
 **Dados Estatísticos – Time de Basquete**
 
