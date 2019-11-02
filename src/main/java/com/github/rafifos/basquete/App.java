@@ -23,6 +23,8 @@ public class App {
   private static List<Player> players = new ArrayList<>();
   private static List<Player> orderedPlayers = new ArrayList<>();
 
+  private static double playerHeightAverage = 0;
+
   /**
    * Ponto de início da aplicação.
    *
@@ -36,6 +38,9 @@ public class App {
         break;
       case "2":
         showPlayerHeightAverage();
+        break;
+      case "3":
+        showStandardDeviation();
         break;
       case "4":
         showSmallestAndHighestPlayer();
@@ -138,7 +143,7 @@ public class App {
       } catch (InputMismatchException ime) {
         System.out.println("Formato da altura inválida. Retornando ao menu principal.");
 
-        exitMethod(false);
+        exitMethod(true);
         return;
       }
 
@@ -154,17 +159,49 @@ public class App {
    * Calcula e mostra a média das alturas dos jogadores.
    */
   private static void showPlayerHeightAverage() {
-    double _heightAverage = 0;
 
     clearScreen();
 
     for (int i = 0; i < players.size(); i++) {
-      _heightAverage += players.get(i).getHeight();
+      playerHeightAverage += players.get(i).getHeight();
     }
 
-    _heightAverage = _heightAverage / players.size();
+    playerHeightAverage = playerHeightAverage / players.size();
 
-    System.out.println("A média das alturas do time é: " + _heightAverage + "m");
+    System.out.println("A média das alturas do time é: " + playerHeightAverage + "m");
+
+    exitMethod(true);
+  }
+
+  /**
+   * Calcula e mostra o desvio padrão dos jogadores. showPlayerHeightAverage()
+   * deve ser executado antes.
+   */
+  private static void showStandardDeviation() {
+    /*
+     * Assumindo que standardDeviation = (Σ(_heightsˆ2) + Σ(heights)) - averageˆ2
+     *
+     * Achei o enunciado um pouco confuso com "alturas" e "total de alturas". Aqui,
+     * suponho que os dois sejam sinônimos.
+     */
+    double _heightsSquared = 0;
+    double _standardDeviation = 0;
+
+    clearScreen();
+
+    if (playerHeightAverage == 0) {
+      System.out.println("Você deve calcular a média antes!");
+      exitMethod(true);
+    }
+
+    // Realiza a soma de todas as alturasˆ2 dos jogadores.
+    for (int i = 0; i < players.size(); i++) {
+      _heightsSquared += Math.pow(players.get(i).getHeight(), 2);
+    }
+
+    _standardDeviation = (_heightsSquared / players.size()) - Math.pow(playerHeightAverage, 2);
+
+    System.out.println("O desvio padrão dos jogadores é: " + _standardDeviation);
 
     exitMethod(true);
   }
