@@ -130,10 +130,13 @@ public class App {
    * Lida com os dados dos jogadores, mais precisamente com o Nome e a Altura.
    */
   private static void handlePlayerData() {
+    clearScreen();
+
     String currentName = null;
     double currentHeight = 0.0;
 
     for (int i = 0; i < 2; i++) {
+      clearScreen();
       stdin.nextLine();
 
       System.out.print("Digite o nome do Jogador: ");
@@ -161,9 +164,11 @@ public class App {
     orderedPlayers = players;
     Collections.sort(orderedPlayers);
 
+    clearScreen();
+
     for (int i = 0; i < players.size(); i++) {
       System.out.println("Nome: " + players.get(i).getName());
-      System.out.println("Altura: " + players.get(i).getHeight());
+      System.out.println("Altura: " + players.get(i).getHeight() + "m");
       System.out.print("\n");
     }
 
