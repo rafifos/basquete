@@ -134,7 +134,6 @@ public class App {
 
     String currentName = null;
     double currentHeight = 0.0;
-    int ra = 0;
 
     for (int i = 0; i < 2; i++) {
       clearScreen();
@@ -142,16 +141,6 @@ public class App {
 
       System.out.print("Digite o nome do Jogador: ");
       currentName = stdin.nextLine();
-
-      System.out.print("Digite o RA do Jogador: ");
-      try {
-        ra = stdin.nextInt();
-      } catch (InputMismatchException ime) {
-        System.out.println("Formato do RA inválido. Retornando ao menu principal.");
-
-        exitMethod(true);
-        return;
-      }
 
       System.out.print("Digite a altura do Jogador: ");
       try {
@@ -169,7 +158,7 @@ public class App {
         exitMethod(true);
       }
 
-      players.add(new Player(currentName, currentHeight, ra));
+      players.add(new Player(currentName, currentHeight));
     }
 
     orderedPlayers = players;
@@ -179,7 +168,6 @@ public class App {
 
     for (int i = 0; i < players.size(); i++) {
       System.out.println("Nome: " + players.get(i).getName());
-      System.out.println("RA: " + players.get(i).getRa());
       System.out.println("Altura: " + players.get(i).getHeight() + "m");
       System.out.print("\n");
     }
