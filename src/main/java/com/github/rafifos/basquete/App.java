@@ -179,6 +179,7 @@ public class App {
    * Calcula e mostra a média das alturas dos jogadores.
    */
   private static void showPlayerHeightAverage() {
+    playerHeightAverage = 0;
 
     clearScreen();
 
@@ -221,6 +222,23 @@ public class App {
   }
 
   /**
+   * Calcula e mostra o Jogador mais baixo e o Jogador mais alto.
+   */
+  private static void showSmallestAndHighestPlayer() {
+    clearScreen();
+
+    System.out.print("O jogador mais baixo é: ");
+    System.out.print(orderedPlayers.get(0).getName());
+    System.out.println(", com " + orderedPlayers.get(0).getHeight() + "m");
+
+    System.out.print("O jogador mais alto é: ");
+    System.out.print(orderedPlayers.get(orderedPlayers.size() - 1).getName());
+    System.out.println(", com " + orderedPlayers.get(orderedPlayers.size() - 1).getHeight() + "m");
+
+    exitMethod(true);
+  }
+
+  /**
    * Calcula e mostra a mediana das alturas dos jogadores
    */
   private static void showPlayerHeightMedian() {
@@ -239,23 +257,6 @@ public class App {
     }
 
     System.out.println("A mediana das alturas do time é: " + _heightMedian + "m");
-
-    exitMethod(true);
-  }
-
-  /**
-   * Calcula e mostra o Jogador mais baixo e o Jogador mais alto.
-   */
-  private static void showSmallestAndHighestPlayer() {
-    clearScreen();
-
-    System.out.print("O jogador mais baixo é: ");
-    System.out.print(orderedPlayers.get(0).getName());
-    System.out.println(", com " + orderedPlayers.get(0).getHeight() + "m");
-
-    System.out.print("O jogador mais alto é: ");
-    System.out.print(orderedPlayers.get(orderedPlayers.size() - 1).getName());
-    System.out.println(", com " + orderedPlayers.get(orderedPlayers.size() - 1).getHeight() + "m");
 
     exitMethod(true);
   }
