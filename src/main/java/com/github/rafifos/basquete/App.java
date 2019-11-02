@@ -205,7 +205,7 @@ public class App {
     clearScreen();
 
     if (playerHeightAverage == 0) {
-      System.out.println("Você deve calcular a média antes!");
+      System.out.println("Você deve calcular a média antes. Retornando ao menu principal.");
       exitMethod(true);
     }
 
