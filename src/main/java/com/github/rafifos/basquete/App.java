@@ -134,8 +134,10 @@ public class App {
     double currentHeight = 0.0;
 
     for (int i = 0; i < 2; i++) {
+      stdin.nextLine();
+
       System.out.print("Digite o nome do Jogador: ");
-      currentName = stdin.next();
+      currentName = stdin.nextLine();
 
       System.out.print("Digite a altura do Jogador: ");
       try {
@@ -147,12 +149,25 @@ public class App {
         return;
       }
 
+      if (currentHeight < 0) {
+        System.out.println("A altura não pode ser negativa. Retornando ao menu principal.");
+
+        exitMethod(true);
+      }
+
       players.add(new Player(currentName, currentHeight));
     }
 
     orderedPlayers = players;
     Collections.sort(orderedPlayers);
-    setDefaultOption();
+
+    for (int i = 0; i < players.size(); i++) {
+      System.out.println("Nome: " + players.get(i).getName());
+      System.out.println("Altura: " + players.get(i).getHeight());
+      System.out.print("\n");
+    }
+
+    exitMethod(true);
   }
 
   /**
@@ -178,12 +193,6 @@ public class App {
    * deve ser executado antes.
    */
   private static void showStandardDeviation() {
-    /*
-     * Assumindo que standardDeviation = (Σ(_heightsˆ2) + Σ(heights)) - averageˆ2
-     *
-     * Achei o enunciado um pouco confuso com "alturas" e "total de alturas". Aqui,
-     * suponho que os dois sejam sinônimos.
-     */
     double _heightsSquared = 0;
     double _standardDeviation = 0;
 
